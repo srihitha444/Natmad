@@ -4,7 +4,6 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>natmad — Something's coming</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,541 +11,312 @@
 
 <style>
 
-/* APPLE STYLE DESIGN SYSTEM */
-
 :root{
-
---blue:#0A84FF;
---blue-soft:rgba(10,132,255,0.08);
-
---bg:#f5f5f7;
---card:#ffffff;
---input:#f2f2f4;
-
---text:#1d1d1f;
---text-soft:#6e6e73;
-
---border:#e5e5e7;
-
+  --blue:#0A84FF;
+  --blue-soft:rgba(10,132,255,0.08);
+  --bg:#f5f5f7;
+  --card:#ffffff;
+  --input:#f2f2f4;
+  --text:#1d1d1f;
+  --text-soft:#6e6e73;
+  --border:#e5e5e7;
 }
 
-*,*::before,*::after{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
-
-html,body{
-height:100%;
-}
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html,body{ height:100%; }
 
 body{
-
-background:var(--bg);
-
-color:var(--text);
-
-font-family:'Manrope',sans-serif;
-
-font-size:15px;
-
-line-height:1.65;
-
--webkit-font-smoothing:antialiased;
-
-overflow-x:hidden;
-
-cursor:none;
-
-display:flex;
-
-flex-direction:column;
-
-min-height:100vh;
-
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Manrope',sans-serif;
+  font-size:15px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  cursor:none;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
 }
 
 /* GRID */
-
 body::before{
-
-content:'';
-
-position:fixed;
-
-inset:0;
-
-pointer-events:none;
-
-background-image:
-
-linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
-
-background-size:80px 80px;
-
-z-index:0;
-
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size:80px 80px;
+  z-index:0;
 }
 
 /* CURSOR */
-
 .cur-dot{
-
-position:fixed;
-
-pointer-events:none;
-
-z-index:9999;
-
-width:6px;
-
-height:6px;
-
-background:var(--blue);
-
-border-radius:50%;
-
-transform:translate(-50%,-50%);
-
+  position:fixed; pointer-events:none; z-index:9999;
+  width:6px; height:6px;
+  background:var(--blue);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
 }
 
 .cur-ring{
-
-position:fixed;
-
-pointer-events:none;
-
-z-index:9998;
-
-width:28px;
-
-height:28px;
-
-border:1.5px solid rgba(10,132,255,0.4);
-
-border-radius:50%;
-
-transform:translate(-50%,-50%);
-
-transition:width .3s,height .3s,border-color .25s,background .25s;
-
+  position:fixed; pointer-events:none; z-index:9998;
+  width:28px; height:28px;
+  border:1.5px solid rgba(10,132,255,0.4);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  transition:width .3s,height .3s,border-color .25s,background .25s;
 }
 
 .cur-ring.on-link{
-
-width:52px;
-height:52px;
-
-background:var(--blue-soft);
-
-border-color:var(--blue);
-
+  width:52px; height:52px;
+  background:var(--blue-soft);
+  border-color:var(--blue);
 }
 
-.cur-dot.on-link{
+.cur-dot.on-link{ transform:translate(-50%,-50%) scale(0); opacity:0; }
 
-transform:translate(-50%,-50%) scale(0);
-opacity:0;
-
-}
-
-/* NAV */
-
+/* NAV — sticky, full height always */
 nav{
-
-position:relative;
-z-index:10;
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding:28px 48px;
-
-border-bottom:1px solid var(--border);
-
-background:rgba(255,255,255,0.7);
-
-backdrop-filter:blur(12px);
-
+  position:sticky;
+  top:0;
+  z-index:100;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 48px;
+  height:64px;
+  min-height:64px;
+  border-bottom:1px solid var(--border);
+  background:rgba(245,245,247,0.88);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  flex-shrink:0;
 }
 
 .logo{
-
-display:flex;
-align-items:center;
-gap:9px;
-
-text-decoration:none;
-
+  display:flex; align-items:center; gap:9px;
+  text-decoration:none;
 }
 
 .logo-text{
-
-font-family:'Instrument Serif',serif;
-
-font-size:18px;
-
-color:var(--text);
-
+  font-family:'Instrument Serif',serif;
+  font-size:18px;
+  color:var(--text);
+  line-height:1;
 }
 
-.logo-dot{color:var(--blue)}
+.logo-dot{ color:var(--blue); }
+
+.nav-right{
+  display:flex; align-items:center; gap:20px;
+}
+
+.nav-tagline{
+  font-size:11px; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase;
+  color:var(--text-soft);
+}
 
 .nav-status{
-
-display:flex;
-align-items:center;
-gap:8px;
-
-font-size:12px;
-font-weight:600;
-
-color:var(--text-soft);
-
-letter-spacing:.08em;
-
-text-transform:uppercase;
-
+  display:flex; align-items:center; gap:8px;
+  font-size:12px; font-weight:600;
+  color:var(--text-soft);
+  letter-spacing:.08em; text-transform:uppercase;
 }
 
 .status-dot{
-
-width:6px;
-height:6px;
-
-border-radius:50%;
-
-background:var(--blue);
-
-animation:blink 2.5s infinite;
-
+  width:6px; height:6px; border-radius:50%;
+  background:var(--blue);
+  animation:blink 2.5s infinite;
 }
 
-@keyframes blink{
-0%,100%{opacity:1}
-50%{opacity:.2}
-}
+@keyframes blink{ 0%,100%{opacity:1} 50%{opacity:.2} }
 
 /* MAIN */
-
 main{
-
-flex:1;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-align-items:center;
-
-text-align:center;
-
-padding:80px 48px;
-
-position:relative;
-
-z-index:1;
-
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:80px 48px;
+  position:relative;
+  z-index:1;
 }
 
 /* HERO */
-
 .eyebrow{
-
-font-size:11px;
-
-font-weight:700;
-
-letter-spacing:.16em;
-
-text-transform:uppercase;
-
-color:var(--blue);
-
-margin-bottom:28px;
-
-display:flex;
-
-align-items:center;
-
-gap:14px;
-
+  font-size:11px; font-weight:700;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--blue);
+  margin-bottom:28px;
+  display:flex; align-items:center; gap:14px;
 }
 
 .eyebrow-line{
-
-width:28px;
-height:1px;
-
-background:var(--blue);
-
-opacity:.5;
-
+  width:28px; height:1px;
+  background:var(--blue);
+  opacity:.5;
 }
 
 .hero-title{
-
-font-family:'Instrument Serif',serif;
-
-font-size:clamp(56px,8vw,110px);
-
-line-height:.95;
-
-letter-spacing:-3px;
-
-max-width:900px;
-
-margin-bottom:32px;
-
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(56px,8vw,110px);
+  line-height:.95;
+  letter-spacing:-3px;
+  max-width:900px;
+  margin-bottom:20px;
 }
 
-.hero-title em{
+.hero-title em{ font-style:italic; color:var(--blue); }
 
-font-style:italic;
-
-color:var(--blue);
-
+.hero-studio{
+  font-size:13px; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:var(--blue);
+  margin-bottom:20px;
+  opacity:0.7;
 }
 
 .hero-sub{
-
-font-size:18px;
-
-font-weight:400;
-
-color:var(--text-soft);
-
-line-height:1.8;
-
-max-width:480px;
-
-margin:0 auto 64px;
-
+  font-size:18px; font-weight:400;
+  color:var(--text-soft);
+  line-height:1.8;
+  max-width:480px;
+  margin:0 auto 64px;
 }
 
 /* CONTACT CARD */
-
 .contact-card{
-
-width:100%;
-
-max-width:520px;
-
-background:var(--card);
-
-border-radius:28px;
-
-padding:44px;
-
-border:1px solid var(--border);
-
-box-shadow:
-0 8px 30px rgba(0,0,0,0.06),
-0 2px 8px rgba(0,0,0,0.04);
-
-backdrop-filter:blur(10px);
-
-transition:transform .25s, box-shadow .25s;
-
-text-align:left;
-
-}
-
-.contact-card:hover{
-
-transform:translateY(-4px);
-
-box-shadow:
-0 20px 60px rgba(0,0,0,0.08),
-0 4px 20px rgba(0,0,0,0.05);
-
+  width:100%; max-width:520px;
+  background:var(--card);
+  border-radius:28px;
+  padding:44px;
+  border:1px solid var(--border);
+  box-shadow:
+    0 8px 30px rgba(0,0,0,0.06),
+    0 2px 8px rgba(0,0,0,0.04);
+  text-align:left;
 }
 
 .card-label{
-
-font-size:11px;
-
-font-weight:700;
-
-letter-spacing:.12em;
-
-text-transform:uppercase;
-
-color:var(--blue);
-
-margin-bottom:6px;
-
+  font-size:11px; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:var(--blue); margin-bottom:6px;
 }
 
 .card-title{
+  font-family:'Instrument Serif',serif;
+  font-size:22px; margin-bottom:4px;
+}
 
-font-family:'Instrument Serif',serif;
+.card-email{
+  font-size:12px; color:var(--text-soft);
+  margin-bottom:24px;
+}
 
-font-size:22px;
-
-margin-bottom:24px;
-
+.card-email a{
+  color:var(--blue); text-decoration:none; font-weight:600;
 }
 
 /* FORM */
-
-.form-group{margin-bottom:14px}
+.form-group{ margin-bottom:14px; }
 
 .form-group label{
-
-display:block;
-
-font-size:11px;
-
-font-weight:700;
-
-letter-spacing:.08em;
-
-text-transform:uppercase;
-
-color:var(--text-soft);
-
-margin-bottom:7px;
-
+  display:block;
+  font-size:11px; font-weight:700;
+  letter-spacing:.08em; text-transform:uppercase;
+  color:var(--text-soft); margin-bottom:7px;
 }
 
 .form-group input,
 .form-group textarea{
-
-width:100%;
-
-background:var(--input);
-
-border:1px solid var(--border);
-
-border-radius:12px;
-
-padding:14px 16px;
-
-font-size:14px;
-
-color:var(--text);
-
-outline:none;
-
-transition:all .2s;
-
-resize:none;
-
+  width:100%;
+  background:var(--input);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:14px 16px;
+  font-size:14px; color:var(--text);
+  font-family:'Manrope',sans-serif;
+  outline:none;
+  transition:all .2s;
+  resize:none;
 }
 
-.form-group textarea{height:90px}
+.form-group textarea{ height:90px; }
 
 .form-group input:focus,
 .form-group textarea:focus{
-
-border-color:var(--blue);
-
-background:white;
-
-box-shadow:0 0 0 3px var(--blue-soft);
-
+  border-color:var(--blue);
+  background:white;
+  box-shadow:0 0 0 3px var(--blue-soft);
 }
 
 /* BUTTON */
-
 .form-submit{
-
-width:100%;
-
-background:var(--blue);
-
-color:white;
-
-font-weight:600;
-
-padding:15px 24px;
-
-border-radius:14px;
-
-border:none;
-
-cursor:pointer;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-gap:8px;
-
-transition:all .2s;
-
-box-shadow:0 6px 16px rgba(10,132,255,0.25);
-
+  width:100%;
+  background:var(--blue);
+  color:white;
+  font-family:'Manrope',sans-serif;
+  font-weight:600; font-size:14px;
+  padding:15px 24px;
+  border-radius:14px;
+  border:none; cursor:pointer;
+  display:flex; align-items:center;
+  justify-content:center; gap:8px;
+  transition:all .2s;
+  box-shadow:0 6px 16px rgba(10,132,255,0.25);
 }
 
 .form-submit:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 32px rgba(10,132,255,0.35);
+}
 
-transform:translateY(-2px);
+/* SUCCESS STATE */
+.success-msg{
+  display:none;
+  text-align:center;
+  padding:24px 0 8px;
+}
 
-box-shadow:0 12px 32px rgba(10,132,255,0.35);
+.success-msg .check{
+  font-size:36px; margin-bottom:12px;
+}
 
+.success-msg h3{
+  font-family:'Instrument Serif',serif;
+  font-size:22px; margin-bottom:8px;
+}
+
+.success-msg p{
+  font-size:13px; color:var(--text-soft); line-height:1.7;
 }
 
 /* FOOTER */
-
 footer{
-
-position:relative;
-
-z-index:1;
-
-padding:24px 48px;
-
-border-top:1px solid var(--border);
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-flex-wrap:wrap;
-
-gap:12px;
-
+  position:relative; z-index:1;
+  padding:24px 48px;
+  border-top:1px solid var(--border);
+  display:flex; justify-content:space-between;
+  align-items:center; flex-wrap:wrap; gap:12px;
 }
 
-.ft-copy,
-.ft-note{
-
-font-size:12px;
-
-color:var(--text-soft);
-
+.ft-copy, .ft-note{
+  font-size:12px; color:var(--text-soft);
 }
 
 /* MOBILE */
-
 @media(max-width:640px){
-
-nav{padding:20px 24px}
-
-main{padding:60px 24px}
-
-.hero-title{letter-spacing:-2px}
-
-footer{
-
-padding:20px 24px;
-
-flex-direction:column;
-
-text-align:center;
-
-}
-
+  nav{ padding:0 24px; }
+  .nav-tagline{ display:none; }
+  main{ padding:60px 24px; }
+  .hero-title{ letter-spacing:-2px; }
+  footer{ padding:20px 24px; flex-direction:column; text-align:center; }
 }
 
 </style>
@@ -557,110 +327,151 @@ text-align:center;
 <div class="cur-dot" id="curDot"></div>
 <div class="cur-ring" id="curRing"></div>
 
+<!-- NAV — sticky -->
 <nav>
+  <a href="#" class="logo">
+    <svg viewBox="0 0 24 24" width="20" fill="#0A84FF">
+      <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z"/>
+    </svg>
+    <span class="logo-text">natmad<span class="logo-dot">.</span></span>
+  </a>
 
-<a href="#" class="logo">
-
-<svg viewBox="0 0 24 24" width="20" fill="#0A84FF">
-<path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z"/>
-</svg>
-
-<span class="logo-text">
-natmad<span class="logo-dot">.</span>
-</span>
-
-</a>
-
-<div class="nav-status">
-<span class="status-dot"></span>
-Under construction
-</div>
-
+  <div class="nav-right">
+    <span class="nav-tagline">Product Experience &amp; Design Studio</span>
+    <div class="nav-status">
+      <span class="status-dot"></span>
+      Under construction
+    </div>
+  </div>
 </nav>
 
 <main>
 
-<div class="eyebrow">
-<span class="eyebrow-line"></span>
-natmad.studio
-<span class="eyebrow-line"></span>
-</div>
+  <div class="eyebrow">
+    <span class="eyebrow-line"></span>
+    natmad.studio
+    <span class="eyebrow-line"></span>
+  </div>
 
-<h1 class="hero-title">
-Something<br><em>great</em><br>is coming.
-</h1>
+  <h1 class="hero-title">
+    Something<br><em>great</em><br>is coming.
+  </h1>
 
-<p class="hero-sub">
-We're putting the finishing touches on our new site.  
-In the meantime, reach out — we're already taking on projects.
-</p>
+  <div class="hero-studio">Product Experience &amp; Design Studio</div>
 
-<div class="contact-card">
+  <p class="hero-sub">
+    We're putting the finishing touches on our new site.<br>
+    In the meantime, reach out — we're already taking on projects.
+  </p>
 
-<div class="card-label">Get in touch</div>
-<div class="card-title">Tell us about your product</div>
+  <div class="contact-card">
 
-<div class="form-group">
-<label>Your Name</label>
-<input type="text" placeholder="Jane Smith">
-</div>
+    <div class="card-label">Get in touch</div>
+    <div class="card-title">Tell us about your product</div>
+    <div class="card-email">Or email us directly at <a href="mailto:sri@natmad.studio">sri@natmad.studio</a></div>
 
-<div class="form-group">
-<label>Email</label>
-<input type="email" placeholder="you@yourcompany.com">
-</div>
+    <!-- Formspree handles the email delivery — replace YOUR_FORM_ID below -->
+    <form id="contactForm" action="https://formspree.io/f/xqeyebpl" method="POST">
 
-<div class="form-group">
-<label>What are you working on?</label>
-<textarea placeholder="Tell us a bit about your product..."></textarea>
-</div>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" name="name" placeholder="Jane Smith" required>
+      </div>
 
-<button class="form-submit">
-Send message
-</button>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="you@yourcompany.com" required>
+      </div>
 
-</div>
+      <div class="form-group">
+        <label>What are you working on?</label>
+        <textarea name="message" placeholder="Tell us a bit about your product..." required></textarea>
+      </div>
+
+      <!-- redirect Formspree reply-to -->
+      <input type="hidden" name="_replyto" value="sri@natmad.studio">
+      <input type="hidden" name="_subject" value="New enquiry — natmad.studio">
+
+      <button type="submit" class="form-submit">
+        Send message
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M1 7h12M7 1l6 6-6 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+    </form>
+
+    <!-- Success message shown after submit -->
+    <div class="success-msg" id="successMsg">
+      <div class="check">✦</div>
+      <h3>Message sent!</h3>
+      <p>Thanks for reaching out. We'll get back to you within 24 hours at <strong>sri@natmad.studio</strong></p>
+    </div>
+
+  </div>
 
 </main>
 
 <footer>
-
-<span class="ft-copy">© 2026 Natmad Studio</span>
-
-<span class="ft-note">
-Product Experience Studio · Hyderabad, IN
-</span>
-
+  <span class="ft-copy">© 2026 Natmad Studio</span>
+  <span class="ft-note">Product Experience &amp; Design Studio</span>
 </footer>
 
 <script>
 
 /* CURSOR */
+const dot = document.getElementById('curDot');
+const ring = document.getElementById('curRing');
+let mx=0, my=0, rx=0, ry=0;
 
-const dot=document.getElementById('curDot');
-const ring=document.getElementById('curRing');
-
-let mx=0,my=0,rx=0,ry=0;
-
-document.addEventListener('mousemove',e=>{
-mx=e.clientX;
-my=e.clientY;
-
-dot.style.left=mx+'px';
-dot.style.top=my+'px';
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx+'px';
+  dot.style.top  = my+'px';
 });
 
 (function anim(){
-
-rx+=(mx-rx)*0.1;
-ry+=(my-ry)*0.1;
-
-ring.style.left=rx+'px';
-ring.style.top=ry+'px';
-
-requestAnimationFrame(anim);
-
+  rx += (mx-rx)*0.1;
+  ry += (my-ry)*0.1;
+  ring.style.left = rx+'px';
+  ring.style.top  = ry+'px';
+  requestAnimationFrame(anim);
 })();
+
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => ring.classList.add('on-link'));
+  el.addEventListener('mouseleave', () => ring.classList.remove('on-link'));
+});
+
+/* FORM — Formspree AJAX submit */
+const form = document.getElementById('contactForm');
+const successMsg = document.getElementById('successMsg');
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = form.querySelector('.form-submit');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      form.style.display = 'none';
+      successMsg.style.display = 'block';
+    } else {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
+    }
+  } catch {
+    btn.textContent = 'Try again';
+    btn.disabled = false;
+  }
+});
 
 </script>
 
