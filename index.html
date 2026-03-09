@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>natmad — Something's coming</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,178 +12,216 @@
 
 <style>
 
-:root{
---blue:#2089ef;
---blue-t:rgba(32,137,239,0.08);
---blue-20:rgba(32,137,239,0.15);
+/* APPLE STYLE DESIGN SYSTEM */
 
-/* LIGHT THEME COLORS */
---black:#ffffff;
---900:#ffffff;
---800:#f5f6f8;
---600:#555;
---400:#777;
---200:#e4e4e4;
---100:#fafafa;
---white:#111111;
+:root{
+
+--blue:#0A84FF;
+--blue-soft:rgba(10,132,255,0.08);
+
+--bg:#f5f5f7;
+--card:#ffffff;
+--input:#f2f2f4;
+
+--text:#1d1d1f;
+--text-soft:#6e6e73;
+
+--border:#e5e5e7;
+
 }
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
+*,*::before,*::after{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+html,body{
+height:100%;
+}
 
 body{
-background:#ffffff;
-color:#111;
+
+background:var(--bg);
+
+color:var(--text);
+
 font-family:'Manrope',sans-serif;
+
 font-size:15px;
+
 line-height:1.65;
+
 -webkit-font-smoothing:antialiased;
+
 overflow-x:hidden;
+
 cursor:none;
+
 display:flex;
+
 flex-direction:column;
+
 min-height:100vh;
+
+}
+
+/* GRID */
+
+body::before{
+
+content:'';
+
+position:fixed;
+
+inset:0;
+
+pointer-events:none;
+
+background-image:
+
+linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+
+background-size:80px 80px;
+
+z-index:0;
+
 }
 
 /* CURSOR */
 
 .cur-dot{
+
 position:fixed;
+
 pointer-events:none;
+
 z-index:9999;
+
 width:6px;
+
 height:6px;
+
 background:var(--blue);
+
 border-radius:50%;
+
 transform:translate(-50%,-50%);
+
 }
 
 .cur-ring{
+
 position:fixed;
+
 pointer-events:none;
+
 z-index:9998;
+
 width:28px;
+
 height:28px;
-border:1.5px solid rgba(32,137,239,0.5);
+
+border:1.5px solid rgba(10,132,255,0.4);
+
 border-radius:50%;
+
 transform:translate(-50%,-50%);
+
 transition:width .3s,height .3s,border-color .25s,background .25s;
+
 }
 
 .cur-ring.on-link{
+
 width:52px;
 height:52px;
-background:var(--blue-t);
+
+background:var(--blue-soft);
+
 border-color:var(--blue);
+
 }
 
 .cur-dot.on-link{
+
 transform:translate(-50%,-50%) scale(0);
 opacity:0;
-}
 
-.cur-ring.on-text{
-width:2px;
-height:26px;
-border-radius:2px;
-border-color:var(--blue);
-}
-
-.cur-dot.on-text{opacity:0}
-
-/* GRID BG */
-
-body::before{
-content:'';
-position:fixed;
-inset:0;
-pointer-events:none;
-
-background-image:
-linear-gradient(rgba(32,137,239,0.02) 1px,transparent 1px),
-linear-gradient(90deg,rgba(32,137,239,0.02) 1px,transparent 1px);
-
-background-size:72px 72px;
-z-index:0;
-}
-
-/* GLOWS */
-
-.glow{
-position:fixed;
-pointer-events:none;
-z-index:0;
-border-radius:50%;
-filter:blur(120px);
-}
-
-.glow-1{
-width:600px;
-height:600px;
-top:-150px;
-left:50%;
-transform:translateX(-50%);
-background:radial-gradient(circle,rgba(32,137,239,0.12) 0%,transparent 70%);
-animation:glowPulse 6s ease-in-out infinite;
-}
-
-.glow-2{
-width:300px;
-height:300px;
-bottom:100px;
-right:-80px;
-background:radial-gradient(circle,rgba(32,137,239,0.08) 0%,transparent 70%);
-}
-
-@keyframes glowPulse{
-0%,100%{opacity:1}
-50%{opacity:.5}
 }
 
 /* NAV */
 
 nav{
+
 position:relative;
 z-index:10;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
+
 padding:28px 48px;
-border-bottom:1px solid #eee;
+
+border-bottom:1px solid var(--border);
+
+background:rgba(255,255,255,0.7);
+
+backdrop-filter:blur(12px);
+
 }
 
 .logo{
+
 display:flex;
 align-items:center;
 gap:9px;
+
 text-decoration:none;
+
 }
 
 .logo-text{
+
 font-family:'Instrument Serif',serif;
+
 font-size:18px;
-color:#111;
+
+color:var(--text);
+
 }
 
 .logo-dot{color:var(--blue)}
 
 .nav-status{
+
 display:flex;
 align-items:center;
 gap:8px;
+
 font-size:12px;
 font-weight:600;
-color:#777;
+
+color:var(--text-soft);
+
 letter-spacing:.08em;
+
 text-transform:uppercase;
+
 }
 
 .status-dot{
+
 width:6px;
 height:6px;
+
 border-radius:50%;
+
 background:var(--blue);
-animation:blink 2.5s ease-in-out infinite;
+
+animation:blink 2.5s infinite;
+
 }
 
 @keyframes blink{
@@ -192,171 +232,302 @@ animation:blink 2.5s ease-in-out infinite;
 /* MAIN */
 
 main{
+
 flex:1;
+
 display:flex;
+
 flex-direction:column;
+
 justify-content:center;
+
 align-items:center;
+
 text-align:center;
+
 padding:80px 48px;
+
 position:relative;
+
 z-index:1;
+
 }
 
+/* HERO */
+
 .eyebrow{
+
 font-size:11px;
+
 font-weight:700;
+
 letter-spacing:.16em;
+
 text-transform:uppercase;
+
 color:var(--blue);
+
 margin-bottom:28px;
+
 display:flex;
+
 align-items:center;
+
 gap:14px;
+
 }
 
 .eyebrow-line{
+
 width:28px;
 height:1px;
+
 background:var(--blue);
+
 opacity:.5;
+
 }
 
 .hero-title{
+
 font-family:'Instrument Serif',serif;
-font-size:clamp(52px,8vw,110px);
+
+font-size:clamp(56px,8vw,110px);
+
 line-height:.95;
-letter-spacing:-4px;
-color:#111;
+
+letter-spacing:-3px;
+
 max-width:900px;
+
 margin-bottom:32px;
+
 }
 
 .hero-title em{
+
 font-style:italic;
+
 color:var(--blue);
+
 }
 
 .hero-sub{
-font-size:17px;
-font-weight:300;
-color:#555;
+
+font-size:18px;
+
+font-weight:400;
+
+color:var(--text-soft);
+
 line-height:1.8;
-max-width:440px;
-margin:0 auto 56px;
+
+max-width:480px;
+
+margin:0 auto 64px;
+
 }
 
 /* CONTACT CARD */
 
 .contact-card{
+
 width:100%;
-max-width:500px;
-background:#ffffff;
-border:1px solid #eaeaea;
-border-radius:24px;
-padding:40px;
+
+max-width:520px;
+
+background:var(--card);
+
+border-radius:28px;
+
+padding:44px;
+
+border:1px solid var(--border);
+
+box-shadow:
+0 8px 30px rgba(0,0,0,0.06),
+0 2px 8px rgba(0,0,0,0.04);
+
+backdrop-filter:blur(10px);
+
+transition:transform .25s, box-shadow .25s;
+
 text-align:left;
-position:relative;
-overflow:hidden;
-box-shadow:0 10px 40px rgba(0,0,0,0.05);
+
+}
+
+.contact-card:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+0 20px 60px rgba(0,0,0,0.08),
+0 4px 20px rgba(0,0,0,0.05);
+
 }
 
 .card-label{
+
 font-size:11px;
+
 font-weight:700;
+
 letter-spacing:.12em;
+
 text-transform:uppercase;
+
 color:var(--blue);
+
 margin-bottom:6px;
+
 }
 
 .card-title{
+
 font-family:'Instrument Serif',serif;
+
 font-size:22px;
-letter-spacing:-.5px;
-color:#111;
+
 margin-bottom:24px;
+
 }
+
+/* FORM */
 
 .form-group{margin-bottom:14px}
 
 .form-group label{
+
 display:block;
+
 font-size:11px;
+
 font-weight:700;
+
 letter-spacing:.08em;
+
 text-transform:uppercase;
-color:#666;
+
+color:var(--text-soft);
+
 margin-bottom:7px;
+
 }
 
 .form-group input,
 .form-group textarea{
+
 width:100%;
-background:#f5f6f8;
-border:1px solid #e5e5e5;
-border-radius:10px;
-padding:12px 16px;
-font-family:'Manrope',sans-serif;
+
+background:var(--input);
+
+border:1px solid var(--border);
+
+border-radius:12px;
+
+padding:14px 16px;
+
 font-size:14px;
-color:#111;
+
+color:var(--text);
+
 outline:none;
-transition:border-color .2s,background .2s;
+
+transition:all .2s;
+
 resize:none;
+
 }
 
 .form-group textarea{height:90px}
 
 .form-group input:focus,
 .form-group textarea:focus{
+
 border-color:var(--blue);
-background:#fff;
+
+background:white;
+
+box-shadow:0 0 0 3px var(--blue-soft);
+
 }
 
+/* BUTTON */
+
 .form-submit{
+
 width:100%;
-margin-top:6px;
+
 background:var(--blue);
-color:#fff;
-font-family:'Manrope',sans-serif;
-font-size:14px;
-font-weight:700;
-padding:14px 24px;
-border-radius:12px;
+
+color:white;
+
+font-weight:600;
+
+padding:15px 24px;
+
+border-radius:14px;
+
 border:none;
+
 cursor:pointer;
+
 display:flex;
+
 align-items:center;
+
 justify-content:center;
+
 gap:8px;
-transition:.2s;
+
+transition:all .2s;
+
+box-shadow:0 6px 16px rgba(10,132,255,0.25);
+
 }
 
 .form-submit:hover{
-background:#1a70cc;
+
 transform:translateY(-2px);
-box-shadow:0 10px 30px rgba(32,137,239,.25);
+
+box-shadow:0 12px 32px rgba(10,132,255,0.35);
+
 }
 
 /* FOOTER */
 
 footer{
+
 position:relative;
+
 z-index:1;
+
 padding:24px 48px;
-border-top:1px solid #eee;
+
+border-top:1px solid var(--border);
+
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
+
 flex-wrap:wrap;
+
 gap:12px;
+
 }
 
 .ft-copy,
 .ft-note{
+
 font-size:12px;
-color:#777;
+
+color:var(--text-soft);
+
 }
+
+/* MOBILE */
 
 @media(max-width:640px){
 
@@ -367,9 +538,13 @@ main{padding:60px 24px}
 .hero-title{letter-spacing:-2px}
 
 footer{
+
 padding:20px 24px;
+
 flex-direction:column;
+
 text-align:center;
+
 }
 
 }
@@ -382,13 +557,11 @@ text-align:center;
 <div class="cur-dot" id="curDot"></div>
 <div class="cur-ring" id="curRing"></div>
 
-<div class="glow glow-1"></div>
-<div class="glow glow-2"></div>
-
 <nav>
 
 <a href="#" class="logo">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="#2089ef">
+
+<svg viewBox="0 0 24 24" width="20" fill="#0A84FF">
 <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z"/>
 </svg>
 
@@ -439,7 +612,7 @@ In the meantime, reach out — we're already taking on projects.
 
 <div class="form-group">
 <label>What are you working on?</label>
-<textarea placeholder="Tell us about your product..."></textarea>
+<textarea placeholder="Tell us a bit about your product..."></textarea>
 </div>
 
 <button class="form-submit">
@@ -453,9 +626,43 @@ Send message
 <footer>
 
 <span class="ft-copy">© 2026 Natmad Studio</span>
-<span class="ft-note">Product Experience Studio · Hyderabad, IN</span>
+
+<span class="ft-note">
+Product Experience Studio · Hyderabad, IN
+</span>
 
 </footer>
+
+<script>
+
+/* CURSOR */
+
+const dot=document.getElementById('curDot');
+const ring=document.getElementById('curRing');
+
+let mx=0,my=0,rx=0,ry=0;
+
+document.addEventListener('mousemove',e=>{
+mx=e.clientX;
+my=e.clientY;
+
+dot.style.left=mx+'px';
+dot.style.top=my+'px';
+});
+
+(function anim(){
+
+rx+=(mx-rx)*0.1;
+ry+=(my-ry)*0.1;
+
+ring.style.left=rx+'px';
+ring.style.top=ry+'px';
+
+requestAnimationFrame(anim);
+
+})();
+
+</script>
 
 </body>
 </html>
