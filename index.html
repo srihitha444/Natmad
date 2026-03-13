@@ -911,6 +911,21 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
     <div class="sec-label">Contact</div>
     <h2 class="h2" style="margin-bottom:52px;">Let's <em>Collaborate.</em></h2>
 
+  .collab-wrap{
+  max-width:720px;
+  margin:0 auto;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+    
+.form-sentence{
+  justify-content:center;
+  text-align:center;
+  flex-wrap:wrap;
+}
+
     <div id="theForm">
       <div class="form-sentence">
         <span class="fs-m">I go by</span>
@@ -946,6 +961,13 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
 
       <div class="submit-row">
         <button class="btn btn-blue" id="sendBtn" onclick="handleSend(event)">
+          
+  .submit-row{
+  display:flex;
+  justify-content:center;
+  margin-top:28px;
+}
+
           Send message
           <span class="btn-arrow">
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
