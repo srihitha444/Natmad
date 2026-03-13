@@ -403,21 +403,25 @@ nav ul a:hover { color: var(--black); }
 
 .form-sentence {
   font-family: 'Instrument Serif', serif;
-  font-size: 26px; letter-spacing: -.3px; line-height: 2;
-  color: var(--black);
+  font-size: clamp(20px, 3vw, 26px);
+  letter-spacing: -.3px; line-height: 2.1;
+  color: var(--black); flex-wrap: wrap;
 }
 .form-sentence + .form-sentence { margin-top: 20px; }
-.fs-m { color: var(--black); font-style: normal; }
+.fs-m { color: var(--400); font-style: italic; }
 
 .fi {
-  font-family: 'Instrument Serif', serif; font-size: 26px;
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(20px, 3vw, 26px);
   letter-spacing: -.3px; background: transparent; border: none;
   border-bottom: 1.5px solid var(--300); outline: none;
   color: var(--black); padding: 0 4px 2px;
-  width: auto; min-width: 160px; transition: border-color .2s;
+  width: auto; min-width: 160px; max-width: 100%;
+  transition: border-color .2s;
 }
 .fi::placeholder { color: var(--300); font-style: italic; }
 .fi:focus { border-color: var(--blue); }
+.fi.err { border-color: var(--red); }
 
 .p-chips { display: inline-flex; gap: 8px; flex-wrap: wrap; vertical-align: middle; margin: 0 4px; }
 .p-chip-item {
@@ -430,20 +434,20 @@ nav ul a:hover { color: var(--black); }
 .p-chip-item.on { border-color: var(--blue); color: var(--blue); background: var(--blue-t); }
 
 .fi-sel {
-  font-family: 'Instrument Serif', serif; font-size: 26px;
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(20px, 3vw, 26px);
   letter-spacing: -.3px; background: transparent; border: none;
   border-bottom: 1.5px solid var(--300); outline: none;
   color: var(--black); padding: 0 4px 2px; cursor: pointer;
-  appearance: none; -webkit-appearance: none; transition: border-color .2s;
+  appearance: none; -webkit-appearance: none;
+  transition: border-color .2s; max-width: 100%;
 }
 .fi-sel:focus { border-color: var(--blue); }
 .fi-sel option { font-family: 'Manrope', sans-serif; font-size: 16px; }
 
 .submit-row { margin-top: 48px; }
 
-.success-msg {
-  display: none; text-align: center; padding: 60px 20px;
-}
+.success-msg { display: none; text-align: center; padding: 60px 20px; }
 .success-icon {
   width: 52px; height: 52px; border-radius: 50%;
   background: var(--blue-t); border: 1.5px solid var(--blue-20);
