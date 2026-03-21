@@ -112,6 +112,44 @@ nav ul a:hover { color: var(--black); }
 }
 .nav-pill:hover { opacity: .88; }
 
+/* hamburger — hidden on desktop */
+.nav-burger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+}
+.nav-burger span {
+  display: block; width: 22px; height: 1.5px; background: var(--black);
+  transition: transform .3s, opacity .3s;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* mobile drawer — hidden by default */
+.nav-drawer {
+  display: none;
+  position: fixed; top: 64px; left: 0; right: 0; z-index: 190;
+  background: rgba(255,255,255,0.98); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--200);
+  flex-direction: column;
+  padding: 16px 24px 24px;
+  gap: 0;
+}
+.nav-drawer.open { display: flex; }
+.nav-drawer a {
+  font-size: 16px; font-weight: 500; color: var(--600);
+  text-decoration: none; padding: 14px 0;
+  border-bottom: 1px solid var(--200); transition: color .2s;
+}
+.nav-drawer a:last-child { border-bottom: none; margin-top: 16px; }
+.nav-drawer a:hover { color: var(--blue); }
+.nav-drawer .drawer-pill {
+  background: var(--blue); color: var(--white) !important;
+  padding: 13px 24px; border-radius: 100px;
+  font-weight: 600 !important; text-align: center;
+  border-bottom: none !important; margin-top: 16px !important;
+}
+
 /* ─── HERO ─── */
 .hero {
   min-height: 100vh;
@@ -503,6 +541,98 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
 .d1 { transition-delay: .1s; }
 .d2 { transition-delay: .2s; }
 .d3 { transition-delay: .3s; }
+
+/* ═══════════════════════════════════
+   MOBILE RESPONSIVE — added layer
+   Does NOT change any desktop styles
+   Breakpoint: 900px nav, 768px layout
+═══════════════════════════════════ */
+
+/* disable custom cursor on touch */
+@media (hover: none) {
+  body { cursor: auto; }
+  .cur-dot, .cur-ring { display: none; }
+}
+
+/* ── NAV ── */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  nav ul { display: none; }
+  .nav-burger { display: flex; }
+}
+
+/* ── ALL SECTIONS ── */
+@media (max-width: 768px) {
+  .sec { padding: 72px 24px; }
+
+  /* hero */
+  .hero { padding: 120px 24px 64px; min-height: 100svh; }
+  .hero-h1 { font-size: clamp(40px, 11vw, 56px); letter-spacing: -1px; }
+  .hero-bottom { flex-direction: column; align-items: flex-start; margin-top: 32px; gap: 24px; }
+  .hero-sub { max-width: 100%; font-size: 16px; }
+  .hero-actions { width: 100%; flex-direction: column; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+
+  /* problem */
+  .prob-top { grid-template-columns: 1fr; gap: 24px; margin-bottom: 32px; }
+  .prob-body { font-size: 16px; }
+  .stats-grid { grid-template-columns: 1fr; border-radius: 14px; }
+  .stat-tile { padding: 28px 22px; }
+  .stat-n { font-size: 44px; }
+
+  /* services */
+  .svc-top { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .svc-note { max-width: 100%; }
+  .svc-list { margin-top: 36px; }
+  .svc-row {
+    grid-template-columns: 1fr;
+    gap: 12px; padding: 28px 0;
+  }
+  .svc-row:hover { padding-left: 0; }
+  .svc-num { font-size: 36px; }
+  .svc-name { font-size: 24px; }
+  .chips { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+
+  /* pricing */
+  .pricing-top { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 32px; }
+  .pricing-note { max-width: 100%; }
+  .pricing-grid { grid-template-columns: 1fr; border-radius: 16px; }
+  .p-card { padding: 36px 28px; }
+  .p-amount { font-size: 44px; }
+
+  /* comparison table */
+  .cmp-top { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 32px; }
+  .cmp-sub { max-width: 100%; }
+  .cmp-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 16px; }
+  .cmp-table { min-width: 600px; border-radius: 0; }
+  .cmp-table thead th { padding: 14px 18px; font-size: 11px; }
+  .cmp-table td { padding: 16px 18px; font-size: 13px; }
+
+  /* contact form */
+  .collab-wrap { text-align: left; }
+  .collab-wrap .h2 { text-align: left; }
+  .form-sentence { font-size: 20px; line-height: 2; }
+  .fi { font-size: 20px; min-width: 120px; }
+  .fi-sel { font-size: 20px; }
+  .p-chips { margin: 6px 0; }
+  .submit-row { display: flex; justify-content: flex-start; }
+
+  /* footer */
+  footer { padding: 48px 24px 28px; }
+  .ft-top { flex-direction: column; gap: 28px; }
+  .ft-cols { gap: 32px; }
+  .ft-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+
+  /* h2 scaling */
+  .h2 { font-size: clamp(32px, 9vw, 48px); }
+}
+
+@media (max-width: 480px) {
+  nav { padding: 0 16px; }
+  .sec { padding: 60px 16px; }
+  .hero { padding: 110px 16px 56px; }
+  footer { padding: 40px 16px 24px; }
+}
 </style>
 </head>
 <body>
@@ -525,6 +655,18 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
     <li><a href="#why">Why Natmad</a></li>
     <li><a href="#collab" class="nav-pill">Book a Call</a></li>
   </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<nav class="nav-drawer" id="drawer">
+  <a href="#problem" onclick="closeDrawer()">Problem</a>
+  <a href="#services" onclick="closeDrawer()">Services</a>
+  <a href="#pricing" onclick="closeDrawer()">Pricing</a>
+  <a href="#why" onclick="closeDrawer()">Why Natmad</a>
+  <a href="#collab" class="drawer-pill" onclick="closeDrawer()">Book a Call</a>
 </nav>
 
 <!-- HERO -->
@@ -642,7 +784,6 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
         <span class="chip">UX Audit</span>
         <span class="chip">1–2 wks</span>
       </div>
-      <!-- no warranty on 01 -->
     </div>
 
     <div class="svc-row">
@@ -729,7 +870,7 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
     </div>
   </div>
 
-  <div class="rev d1">
+  <div class="cmp-table-wrap rev d1">
     <table class="cmp-table">
       <thead>
         <tr>
@@ -889,6 +1030,18 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: .07 });
 document.querySelectorAll('.rev').forEach(el => obs.observe(el));
 
+/* MOBILE NAV */
+const burger = document.getElementById('burger');
+const drawer = document.getElementById('drawer');
+function closeDrawer() {
+  burger.classList.remove('open');
+  drawer.classList.remove('open');
+}
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  drawer.classList.toggle('open');
+});
+
 /* PLATFORM CHIPS */
 document.querySelectorAll('.p-chip-item').forEach(c => {
   c.addEventListener('click', () => c.classList.toggle('on'));
@@ -902,7 +1055,6 @@ async function handleSend(e) {
   if (!name)  { document.getElementById('fname').focus();  return; }
   if (!email) { document.getElementById('femail').focus(); return; }
 
-  // collect platform selections
   const selected = [...document.querySelectorAll('.p-chip-item.on')].map(c => c.dataset.v).join(', ');
   document.getElementById('fplatform').value = selected;
 
