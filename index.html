@@ -8,7 +8,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-FMN4XWJQBP');
 </script>
 
@@ -19,10 +18,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-PG29Z6XP');</script>
 <!-- End Google Tag Manager -->
-  
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>natmad. — Product Design & Experience Studio</title>
+
+<!-- OG / Social meta -->
+<meta property="og:title" content="natmad. — Product Design & Experience Studio">
+<meta property="og:description" content="Growth-focused product design & experience partners for AI & Tech teams. We close the gap between how smart your product is and how smart it feels.">
+<meta property="og:url" content="https://natmad.studio/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="natmad. — Product Design & Experience Studio">
+<meta name="twitter:description" content="Growth-focused product design & experience partners for AI & Tech teams.">
+<meta name="description" content="Growth-focused product design & experience partners for AI & Tech teams. We close the gap between how smart your product is and how smart it feels.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -48,12 +58,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PG29Z6XP"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-  
   background: var(--white);
   color: var(--black);
   font-family: 'Manrope', sans-serif;
@@ -126,7 +130,6 @@ nav ul a:hover { color: var(--black); }
 }
 .nav-pill:hover { opacity: .88; }
 
-/* hamburger — hidden on desktop */
 .nav-burger {
   display: none; flex-direction: column; gap: 5px;
   background: none; border: none; cursor: pointer; padding: 4px;
@@ -139,7 +142,6 @@ nav ul a:hover { color: var(--black); }
 .nav-burger.open span:nth-child(2) { opacity: 0; }
 .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-/* mobile drawer — hidden by default */
 .nav-drawer {
   display: none;
   position: fixed; top: 64px; left: 0; right: 0; z-index: 190;
@@ -363,70 +365,122 @@ nav ul a:hover { color: var(--black); }
 .chip-w { background: var(--blue-t); border-color: var(--blue-20) !important; color: var(--blue) !important; }
 .svc-row:hover .chip:not(.chip-w) { border-color: var(--blue); color: var(--blue); }
 
-/* ─── PRICING ─── */
-.pricing-top {
+/* ─── FAQ ─── */
+.faq-list { margin-top: 52px; }
+.faq-item {
+  border-top: 1px solid var(--200);
+  padding: 28px 0; cursor: pointer;
+  position: relative;
+}
+.faq-item:last-child { border-bottom: 1px solid var(--200); }
+.faq-header {
+  display: flex; justify-content: space-between; align-items: center; gap: 24px;
+}
+.faq-q {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px; letter-spacing: -.3px; color: var(--black); line-height: 1.3;
+  transition: color .2s;
+}
+.faq-item:hover .faq-q { color: var(--blue); }
+.faq-icon {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1.5px solid var(--200); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color .2s, background .2s, transform .3s;
+}
+.faq-item.open .faq-icon {
+  border-color: var(--blue); background: var(--blue);
+  transform: rotate(45deg);
+}
+.faq-icon svg { width: 12px; height: 12px; }
+.faq-icon svg path { stroke: var(--600); transition: stroke .2s; }
+.faq-item.open .faq-icon svg path { stroke: var(--white); }
+.faq-a {
+  font-size: 15px; font-weight: 300; color: var(--600); line-height: 1.85;
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s cubic-bezier(.23,1,.32,1), padding .3s;
+}
+.faq-item.open .faq-a { max-height: 300px; padding-top: 16px; }
+
+/* ─── BLOG ─── */
+.blog-top {
   display: flex; justify-content: space-between; align-items: flex-end;
-  flex-wrap: wrap; gap: 20px; margin-bottom: 56px;
+  flex-wrap: wrap; gap: 20px; margin-bottom: 52px;
 }
-.pricing-note { font-size: 15px; color: var(--600); font-weight: 300; max-width: 260px; line-height: 1.75; }
+.blog-link-all {
+  font-size: 13px; font-weight: 600; color: var(--blue);
+  text-decoration: none; display: flex; align-items: center; gap: 6px;
+  transition: opacity .2s;
+}
+.blog-link-all:hover { opacity: .75; }
 
-.pricing-grid {
-  display: grid; grid-template-columns: repeat(3,1fr);
+.blog-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1px; background: var(--200);
-  border: 1px solid var(--200); border-radius: 24px; overflow: hidden;
+  border: 1px solid var(--200); border-radius: 20px; overflow: hidden;
 }
 
-.p-card {
-  background: var(--blue-card);
-  padding: 52px 44px;
-  display: flex; flex-direction: column;
+.blog-card {
+  background: var(--white); padding: 40px 36px;
+  display: flex; flex-direction: column; gap: 16px;
+  text-decoration: none; color: inherit;
+  transition: background .2s;
   position: relative; overflow: hidden;
-  transition: background .25s;
 }
-.p-card:hover { background: #daeaf9; }
-.p-card::before {
-  content: ''; position: absolute; top: -40px; right: -40px;
-  width: 180px; height: 180px;
-  background: radial-gradient(circle, rgba(32,137,239,.12) 0%, transparent 70%);
-  pointer-events: none;
+.blog-card:hover { background: var(--blue-card); }
+.blog-card::after {
+  content: ''; position: absolute; bottom: -1px; left: 0;
+  height: 2px; width: 0; background: var(--blue);
+  transition: width .45s cubic-bezier(.23,1,.32,1);
 }
+.blog-card:hover::after { width: 100%; }
 
-.p-card-idx {
-  font-size: 11px; font-weight: 700; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--blue); opacity: .5; margin-bottom: 20px;
+.blog-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--blue); background: var(--blue-t);
+  padding: 4px 10px; border-radius: 100px;
+  width: fit-content;
 }
-.p-card-name {
+.blog-title {
   font-family: 'Instrument Serif', serif;
-  font-size: 28px; letter-spacing: -.4px; color: var(--black);
-  line-height: 1.2; margin-bottom: 12px;
+  font-size: 22px; letter-spacing: -.3px; color: var(--black);
+  line-height: 1.3; flex: 1;
+  transition: color .2s;
 }
-.p-card-desc {
-  font-size: 15px; font-weight: 300; color: var(--600);
-  line-height: 1.75; margin-bottom: 36px; flex: 1;
+.blog-card:hover .blog-title { color: var(--blue); }
+.blog-meta {
+  font-size: 12px; color: var(--400); font-weight: 400;
+  display: flex; align-items: center; gap: 8px;
 }
-.p-divider { width: 100%; height: 1px; background: var(--blue-20); margin-bottom: 28px; }
+.blog-arrow {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1.5px solid var(--200);
+  display: flex; align-items: center; justify-content: center;
+  margin-top: auto; align-self: flex-start;
+  transition: border-color .2s, background .2s, transform .25s;
+}
+.blog-card:hover .blog-arrow {
+  border-color: var(--blue); background: var(--blue);
+  transform: translateX(4px);
+}
+.blog-arrow svg path { stroke: var(--600); transition: stroke .2s; }
+.blog-card:hover .blog-arrow svg path { stroke: var(--white); }
 
-.p-amount {
+/* Coming soon tile */
+.blog-card-soon {
+  background: var(--50); cursor: default;
+}
+.blog-card-soon:hover { background: var(--50); }
+.blog-card-soon::after { display: none; }
+.blog-soon-label {
+  font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--300);
+}
+.blog-soon-title {
   font-family: 'Instrument Serif', serif;
-  font-size: 52px; letter-spacing: -2px; line-height: 1;
-  color: var(--black); margin-bottom: 6px;
+  font-size: 22px; letter-spacing: -.3px; color: var(--300);
+  line-height: 1.3; flex: 1; font-style: italic;
 }
-.p-sym { font-size: 28px; vertical-align: top; margin-top: 8px; display: inline-block; }
-.p-duration {
-  font-size: 13px; font-weight: 600; color: var(--500);
-  letter-spacing: .04em; text-transform: uppercase; margin-bottom: 32px;
-}
-
-.p-cta {
-  display: inline-flex; align-items: center; gap: 9px;
-  font-family: 'Manrope', sans-serif; font-size: 14px; font-weight: 600;
-  padding: 13px 24px; border-radius: 100px;
-  background: var(--blue); color: var(--white);
-  border: none; cursor: pointer; text-decoration: none; width: fit-content;
-  box-shadow: 0 4px 16px rgba(32,137,239,.2);
-  transition: transform .2s, opacity .2s, box-shadow .2s;
-}
-.p-cta:hover { transform: translateY(-2px); opacity: .92; box-shadow: 0 8px 28px rgba(32,137,239,.3); }
 
 /* ─── WHY NATMAD ─── */
 .cmp-top {
@@ -484,7 +538,6 @@ nav ul a:hover { color: var(--black); }
 }
 .fi::placeholder { color: var(--300); font-style: italic; }
 .fi:focus { border-color: var(--blue); }
-.fi.err { border-color: var(--red); }
 
 .p-chips { display: inline-flex; gap: 8px; flex-wrap: wrap; vertical-align: middle; margin: 0 4px; }
 .p-chip-item {
@@ -507,6 +560,15 @@ nav ul a:hover { color: var(--black); }
 }
 .fi-sel:focus { border-color: var(--blue); }
 .fi-sel option { font-family: 'Manrope', sans-serif; font-size: 16px; }
+
+/* What happens next note */
+.form-next-note {
+  margin-top: 20px; padding: 16px 20px;
+  background: var(--blue-t); border: 1px solid var(--blue-20); border-radius: 12px;
+  font-size: 13px; color: var(--600); line-height: 1.6;
+  display: flex; align-items: flex-start; gap: 10px; text-align: left;
+}
+.form-next-note-icon { color: var(--blue); font-size: 16px; flex-shrink: 0; margin-top: 1px; }
 
 .submit-row { margin-top: 48px; }
 
@@ -556,30 +618,21 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
 .d2 { transition-delay: .2s; }
 .d3 { transition-delay: .3s; }
 
-/* ═══════════════════════════════════
-   MOBILE RESPONSIVE — added layer
-   Does NOT change any desktop styles
-   Breakpoint: 900px nav, 768px layout
-═══════════════════════════════════ */
-
-/* disable custom cursor on touch */
+/* ─── MOBILE ─── */
 @media (hover: none) {
   body { cursor: auto; }
   .cur-dot, .cur-ring { display: none; }
 }
 
-/* ── NAV ── */
 @media (max-width: 900px) {
   nav { padding: 0 24px; }
   nav ul { display: none; }
   .nav-burger { display: flex; }
 }
 
-/* ── ALL SECTIONS ── */
 @media (max-width: 768px) {
   .sec { padding: 72px 24px; }
 
-  /* hero */
   .hero { padding: 120px 24px 64px; min-height: 100svh; }
   .hero-h1 { font-size: clamp(40px, 11vw, 56px); letter-spacing: -1px; }
   .hero-bottom { flex-direction: column; align-items: flex-start; margin-top: 32px; gap: 24px; }
@@ -587,34 +640,25 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
   .hero-actions { width: 100%; flex-direction: column; }
   .hero-actions .btn { width: 100%; justify-content: center; }
 
-  /* problem */
   .prob-top { grid-template-columns: 1fr; gap: 24px; margin-bottom: 32px; }
   .prob-body { font-size: 16px; }
   .stats-grid { grid-template-columns: 1fr; border-radius: 14px; }
   .stat-tile { padding: 28px 22px; }
   .stat-n { font-size: 44px; }
 
-  /* services */
   .svc-top { flex-direction: column; align-items: flex-start; gap: 12px; }
   .svc-note { max-width: 100%; }
   .svc-list { margin-top: 36px; }
-  .svc-row {
-    grid-template-columns: 1fr;
-    gap: 12px; padding: 28px 0;
-  }
+  .svc-row { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
   .svc-row:hover { padding-left: 0; }
   .svc-num { font-size: 36px; }
   .svc-name { font-size: 24px; }
   .chips { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
 
-  /* pricing */
-  .pricing-top { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 32px; }
-  .pricing-note { max-width: 100%; }
-  .pricing-grid { grid-template-columns: 1fr; border-radius: 16px; }
-  .p-card { padding: 36px 28px; }
-  .p-amount { font-size: 44px; }
+  .blog-grid { grid-template-columns: 1fr; border-radius: 16px; }
+  .blog-card { padding: 28px 24px; }
+  .blog-top { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 32px; }
 
-  /* comparison table */
   .cmp-top { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 32px; }
   .cmp-sub { max-width: 100%; }
   .cmp-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 16px; }
@@ -622,7 +666,6 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
   .cmp-table thead th { padding: 14px 18px; font-size: 11px; }
   .cmp-table td { padding: 16px 18px; font-size: 13px; }
 
-  /* contact form */
   .collab-wrap { text-align: left; }
   .collab-wrap .h2 { text-align: left; }
   .form-sentence { font-size: 20px; line-height: 2; }
@@ -631,13 +674,11 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
   .p-chips { margin: 6px 0; }
   .submit-row { display: flex; justify-content: flex-start; }
 
-  /* footer */
   footer { padding: 48px 24px 28px; }
   .ft-top { flex-direction: column; gap: 28px; }
   .ft-cols { gap: 32px; }
   .ft-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
 
-  /* h2 scaling */
   .h2 { font-size: clamp(32px, 9vw, 48px); }
 }
 
@@ -650,6 +691,10 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
 </style>
 </head>
 <body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PG29Z6XP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="cur-dot" id="curDot"></div>
 <div class="cur-ring" id="curRing"></div>
@@ -665,8 +710,9 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
   <ul>
     <li><a href="#problem">Problem</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#blog">Blog</a></li>
     <li><a href="#why">Why Natmad</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#collab" class="nav-pill">Book a Call</a></li>
   </ul>
   <button class="nav-burger" id="burger" aria-label="Menu">
@@ -678,8 +724,9 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
 <nav class="nav-drawer" id="drawer">
   <a href="#problem" onclick="closeDrawer()">Problem</a>
   <a href="#services" onclick="closeDrawer()">Services</a>
-  <a href="#pricing" onclick="closeDrawer()">Pricing</a>
+  <a href="#blog" onclick="closeDrawer()">Blog</a>
   <a href="#why" onclick="closeDrawer()">Why Natmad</a>
+  <a href="#faq" onclick="closeDrawer()">FAQ</a>
   <a href="#collab" class="drawer-pill" onclick="closeDrawer()">Book a Call</a>
 </nav>
 
@@ -807,7 +854,7 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
       <div class="chips">
         <span class="chip">Full UI/UX</span>
         <span class="chip">4 wks</span>
-        <span class="chip chip-w">4/mo Warranty</span>
+        <span class="chip chip-w">4-mo Warranty</span>
       </div>
     </div>
 
@@ -818,59 +865,50 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
       <div class="chips">
         <span class="chip">3mo / Retainer +</span>
         <span class="chip">Ongoing</span>
-        <span class="chip chip-w">4/mo Warranty</span>
+        <span class="chip chip-w">4-mo Warranty</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="sec sec-white grid" id="pricing">
-  <div class="pricing-top rev">
+<!-- BLOG -->
+<section class="sec sec-white grid" id="blog">
+  <div class="blog-top rev">
     <div>
-      <div class="sec-label">Pricing</div>
-      <h2 class="h2">Three offers. Clear scope.<br><span class="ib">No surprises.</span></h2>
+      <div class="sec-label">From the Studio</div>
+      <h2 class="h2">Thinking on product <span class="ib">design.</span></h2>
     </div>
+    <a href="https://www.notion.so/AI-Tool-UX-Why-Most-AI-Products-Look-and-Feel-the-Same-And-How-to-Stand-Out-340344c3456c80d8b712e832c19a726c?source=copy_link" target="_blank" rel="noopener" class="blog-link-all">
+      Read all posts
+      <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </div>
 
-  <div class="pricing-grid rev d1">
-    <div class="p-card">
-      <div class="p-card-idx">01</div>
-      <div class="p-card-name">Product Experience Diagnosis</div>
-      <div class="p-card-desc">A clear map of where your product loses users and exactly what to fix first.</div>
-      <div class="p-divider"></div>
-      <div class="p-amount"><span class="p-sym">$</span>1,500</div>
-      <div class="p-duration">1–2 weeks</div>
-      <a href="#collab" class="p-cta">
-        Get started
-        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+  <div class="blog-grid rev d1">
+    <!-- Live post -->
+    <a class="blog-card" href="https://www.notion.so/AI-Tool-UX-Why-Most-AI-Products-Look-and-Feel-the-Same-And-How-to-Stand-Out-340344c3456c80d8b712e832c19a726c?source=copy_link" target="_blank" rel="noopener">
+      <span class="blog-tag">AI & UX</span>
+      <div class="blog-title">Why Most AI Products Look and Feel the Same — And How to Stand Out</div>
+      <div class="blog-meta">
+        <span>Sri</span>
+        <span>·</span>
+        <span>Apr 2026</span>
+      </div>
+      <div class="blog-arrow">
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </a>
+
+    <!-- Coming soon 1 -->
+    <div class="blog-card blog-card-soon">
+      <span class="blog-soon-label">Coming soon</span>
+      <div class="blog-soon-title">The activation problem: why users sign up and disappear</div>
     </div>
 
-    <div class="p-card">
-      <div class="p-card-idx">02</div>
-      <div class="p-card-name">Targeted Design Sprint</div>
-      <div class="p-card-desc">One critical flow redesigned end-to-end with full UI/UX and dev-ready handoff.</div>
-      <div class="p-divider"></div>
-      <div class="p-amount"><span class="p-sym">$</span>4,500</div>
-      <div class="p-duration">4 weeks</div>
-      <a href="#collab" class="p-cta">
-        Get started
-        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-
-    <div class="p-card">
-      <div class="p-card-idx">03</div>
-      <div class="p-card-name">Product Experience Partner</div>
-      <div class="p-card-desc">An embedded design partner delivering continuous product improvement every month.</div>
-      <div class="p-divider"></div>
-      <div class="p-amount"><span class="p-sym">$</span>5,000</div>
-      <div class="p-duration">per month · min. 3 months</div>
-      <a href="#collab" class="p-cta">
-        Get started
-        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+    <!-- Coming soon 2 -->
+    <div class="blog-card blog-card-soon">
+      <span class="blog-soon-label">Coming soon</span>
+      <div class="blog-soon-title">What a UX audit actually looks like in practice</div>
     </div>
   </div>
 </section>
@@ -929,8 +967,78 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
   </div>
 </section>
 
-<!-- LET'S COLLABORATE -->
-<section class="sec sec-white grid" id="collab">
+<!-- FAQ -->
+<section class="sec sec-white" id="faq">
+  <div class="rev">
+    <div class="sec-label">FAQ</div>
+    <h2 class="h2">Common <span class="ib">questions.</span></h2>
+  </div>
+
+  <div class="faq-list rev d1">
+    <div class="faq-item">
+      <div class="faq-header" onclick="toggleFaq(this)">
+        <div class="faq-q">What happens after I send a message?</div>
+        <div class="faq-icon">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#555" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="faq-a">You'll hear back within 24 hours at sri@natmad.studio. We'll schedule a short discovery call to understand your product, your biggest friction points, and which of the three offerings makes the most sense for where you are right now. No hard sell — just a focused conversation.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header" onclick="toggleFaq(this)">
+        <div class="faq-q">What's included in the 4-month warranty?</div>
+        <div class="faq-icon">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#555" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="faq-a">After delivery, we stay accountable for 4 months. If your team needs design adjustments, handoff clarifications, or developer support on the delivered work, we're on it — at no extra cost. This is how we ensure the work actually ships and performs, not just gets handed off.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header" onclick="toggleFaq(this)">
+        <div class="faq-q">How long does a typical engagement take to kick off?</div>
+        <div class="faq-icon">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#555" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="faq-a">Most projects start within 1 week of the discovery call. The Product Experience Diagnosis can begin in as little as 2–3 days. Onboarding is intentionally lightweight — we don't need six weeks of alignment meetings before doing meaningful work.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header" onclick="toggleFaq(this)">
+        <div class="faq-q">Do I need to have a fully built product?</div>
+        <div class="faq-icon">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#555" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="faq-a">No. We work at different stages — from early-stage products figuring out their core flows to mature products with retention problems. The Product Experience Diagnosis is a great starting point if you're unsure where the biggest issues are. We'll tell you exactly what to fix first.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header" onclick="toggleFaq(this)">
+        <div class="faq-q">What's the difference between the Diagnosis and the Design Sprint?</div>
+        <div class="faq-icon">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#555" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="faq-a">The Diagnosis gives you a clear map and prioritised action plan — you walk away knowing exactly what to fix. The Design Sprint actually fixes it: one critical flow, fully redesigned end-to-end with high-fidelity UI and a dev-ready handoff. Many clients start with the Diagnosis, then move into a Sprint.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-header" onclick="toggleFaq(this)">
+        <div class="faq-q">What tools do you use for delivery and handoff?</div>
+        <div class="faq-icon">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="#555" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div class="faq-a">Figma for design and prototyping, with structured dev-ready handoff specs. We also hold regular sessions with your developers directly to make sure nothing gets lost in translation between design and implementation.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec sec-off grid" id="collab">
   <div class="collab-wrap rev">
     <div class="sec-label">Contact</div>
     <h2 class="h2" style="margin-bottom:52px;">Let's <span class="ib">Collaborate.</span></h2>
@@ -967,6 +1075,11 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
       <div class="form-sentence">
         <span class="fs-m">Reach me at</span>
         <input class="fi" type="email" id="femail" name="email" placeholder="your@email.com" size="20" autocomplete="email">
+      </div>
+
+      <div class="form-next-note">
+        <span class="form-next-note-icon">✦</span>
+        <span>After you send this, you'll hear back within 24 hours. We'll set up a free consultancy call no commitment, just a focused conversation about your product.</span>
       </div>
 
       <div class="submit-row" style="display:flex;justify-content:center;">
@@ -1007,8 +1120,12 @@ footer { background: var(--100); border-top: 1px solid var(--200); padding: 60px
         <a href="#services">Product Experience Partner</a>
       </div>
       <div class="ft-col">
+        <div class="ft-col-h">Read</div>
+        <a href="https://www.notion.so/AI-Tool-UX-Why-Most-AI-Products-Look-and-Feel-the-Same-And-How-to-Stand-Out-340344c3456c80d8b712e832c19a726c?source=copy_link" target="_blank" rel="noopener">AI Tool UX</a>
+      </div>
+      <div class="ft-col">
         <div class="ft-col-h">Connect</div>
-        <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/sri-natmad" target="_blank" rel="noopener">LinkedIn</a>
         <a href="mailto:sri@natmad.studio">sri@natmad.studio</a>
       </div>
     </div>
@@ -1033,7 +1150,7 @@ document.addEventListener('mousemove', e => {
   ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
   requestAnimationFrame(loop);
 })();
-document.querySelectorAll('a, button, .svc-row, .p-chip-item, select').forEach(el => {
+document.querySelectorAll('a, button, .svc-row, .p-chip-item, select, .faq-header').forEach(el => {
   el.addEventListener('mouseenter', () => { dot.classList.add('hl'); ring.classList.add('hl'); });
   el.addEventListener('mouseleave', () => { dot.classList.remove('hl'); ring.classList.remove('hl'); });
 });
@@ -1061,7 +1178,15 @@ document.querySelectorAll('.p-chip-item').forEach(c => {
   c.addEventListener('click', () => c.classList.toggle('on'));
 });
 
-/* FORM SUBMIT — Formspree */
+/* FAQ ACCORDION */
+function toggleFaq(header) {
+  const item = header.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* FORM SUBMIT */
 async function handleSend(e) {
   e.preventDefault();
   const name  = document.getElementById('fname').value.trim();
